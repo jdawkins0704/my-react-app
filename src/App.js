@@ -6,7 +6,7 @@ function Square() {
      function handleClick() {
     console.log('clicked!');
   }
-
+  
   return (
     <button
       className="square"
