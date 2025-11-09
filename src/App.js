@@ -9,21 +9,17 @@ function Square({value, onSquareClick}) {
 }
 
 export default function Board({ xIsNext, squares, onPlay }) {
-  const [xIsNext, setXIsNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
-
   function handleClick(i) {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
     const nextSquares = squares.slice();
     if (xIsNext) {
-      nextSquares[i] = 'X';
+      nextSquares[i] = "X";
     } else {
-      nextSquares[i] = 'O';
+      nextSquares[i] = "O";
     }
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
+    onPlay(nextSquares);
   }
 
   const winner = calculateWinner(squares);
