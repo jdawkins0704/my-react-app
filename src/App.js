@@ -59,9 +59,11 @@ export default function Game() {
   const currentSquares = history[history.length - 1];
 
   function handlePlay(nextSquares) {
-    setHistory([...history, nextSquares]);
-    setXIsNext(!xIsNext);
-  }
+  const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+  setHistory(nextHistory);
+  setCurrentMove(nextHistory.length - 1);
+  setXIsNext(!xIsNext);
+}
 
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
